@@ -9,7 +9,7 @@
     <script src="/socket.io/socket.io.js"></script>
 
         <script>
-              aidansong =
+            aidansong =
                     [[987.8, 266.6],
                         [830.6, 266.6],
                         [740, 266.6],
@@ -59,35 +59,11 @@
                     $("#front_left").text(data.cliff_sensors.front_left.signal.raw);
                     $("#front_right").text(data.cliff_sensors.front_right.signal.raw);
                     $("#right").text(data.cliff_sensors.right.signal.raw);
-                    if (data.cliff_sensors.front_right.signal.raw > 1000) {
-                        socket.emit('drive', {left: 15, right: -15});
-                    }
-                    if (data.cliff_sensors.front_left.signal.raw > 1000) {
-                        socket.emit('drive', {left: -15, right: 15});
-                    }
-                    if (data.cliff_sensors.front_right.signal.raw < 700) {
-                        socket.emit('drive', {left: 50, right: 50});
-                    }
-                    if (data.cliff_sensors.front_left.signal.raw < 700) {
-                        socket.emit('drive', {left: 50, right: 50});
-                    }
-                    if (data.cliff_sensors.front_left.signal.raw < 400) {
-                        socket.emit('drive', {left: 0, right: 0});
-                    }
-                    if (data.cliff_sensors.front_right.signal.raw < 400) {
-                        socket.emit('drive', {left: 0, right: 0});
-                    }
-                    if (data.cliff_sensors.right.signal.raw < 400) {
-                        socket.emit('drive', {left: 0, right: 0});
-                    }
-                    if (data.cliff_sensors.left.signal.raw < 400) {
-                        socket.emit('drive', {left: 0, right: 0});
-                    }
                     //$("#allsensors").text(JSON.stringify(data));
                     if ($('#followline').is(':checked')) {
                         followline(data)
                     }
-                    
+                    ;
                     socket.emit('sensorswritten');
                 });
                 $("#forward").click(function(e) {
